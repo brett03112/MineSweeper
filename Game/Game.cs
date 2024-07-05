@@ -210,15 +210,59 @@ public class Game
         
         while(gameOn)
         {
+            WriteLine();
             DisplayBoard(playBoard);
             WriteLine("If you would like to tag a bomb, press the letter 'B' else press any other letter key.");  
-            char key = char.Parse(ReadLine()!);
+            char key = ReadKey().KeyChar;
+            WriteLine();
             if(key == 'B')
             {
+                int rowB = 0;
+                int columnB = 0;
                 WriteLine("Enter a row from 1-10: ");
-                int rowB = int.Parse(ReadLine()! ) - 1;
+                try
+                {
+                    rowB = int.Parse(ReadLine()!) - 1;
+                }
+                catch (FormatException) // catch a specific exception
+                {
+                    WriteLine("You did not enter a valid number.");
+                    continue;
+                }
+                catch (Exception ex) // catch all exceptions
+                {
+                    WriteLine($"{ex.GetType()} says {ex.Message}");
+                    continue;
+                }
+                
+                if (rowB < 0 || rowB > 9)
+                {
+                    WriteLine("Row must be between 1 and 10");
+                    continue;
+                }
+
                 WriteLine("Enter a column from 1-10: ");
-                int columnB = int.Parse(ReadLine()!) - 1;
+                try
+                {
+                    columnB = int.Parse(ReadLine()!) - 1;
+                }
+                catch (FormatException) // catch a specific exception
+                {
+                    WriteLine("You did not enter a valid number.");
+                    continue;
+                }
+                catch (Exception ex) // catch all exceptions
+                {
+                    WriteLine($"{ex.GetType()} says {ex.Message}");
+                    continue;
+                }
+                
+                
+                if (columnB < 0 || columnB > 9)
+                {
+                    WriteLine("Column must be between 1 and 10");
+                    continue;
+                }
                 playBoard[rowB, columnB] = 'B';
                 markedBombs++;
                 if(markedBombs == numOfBombs)
@@ -240,14 +284,52 @@ public class Game
                     }
                 }
                 DisplayBoard(playBoard);
+                WriteLine();
                 continue;
             }
             else
             {
                 WriteLine("Enter a row from 1-10: ");
-                row = int.Parse(ReadLine()! ) - 1;
+                try
+                {
+                    row = int.Parse(ReadLine()!) - 1;
+                }
+                catch (FormatException) // catch a specific exception
+                {
+                    WriteLine("You did not enter a valid number.");
+                    continue;
+                }
+                catch (Exception ex) // catch all exceptions
+                {
+                    WriteLine($"{ex.GetType()} says {ex.Message}");
+                    continue;
+                }
+                if(row < 0 || row > 9)
+                {
+                    WriteLine("Row must be between 1 and 10");
+                    continue;
+                }
+
                 WriteLine("Enter a column from 1-10: ");
-                column = int.Parse(ReadLine()!) - 1;
+                try
+                {
+                    column = int.Parse(ReadLine()!) - 1;
+                }
+                catch (FormatException) // catch a specific exception
+                {
+                    WriteLine("You did not enter a valid number.");
+                    continue;
+                }
+                catch (Exception ex) // catch all exceptions
+                {
+                    WriteLine($"{ex.GetType()} says {ex.Message}");
+                    continue;
+                }
+                if(column < 0 || column > 9)
+                {
+                    WriteLine("Column must be between 1 and 10");
+                    continue;
+                }
 
                 if(referenceBoard[row, column] == 9)
                 {

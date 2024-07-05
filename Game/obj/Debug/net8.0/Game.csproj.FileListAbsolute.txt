@@ -9,3 +9,4 @@ C:\Users\brett\Documents\csharp\MineSweeper\Game\obj\Debug\net8.0\Game.dll
 C:\Users\brett\Documents\csharp\MineSweeper\Game\obj\Debug\net8.0\refint\Game.dll
 C:\Users\brett\Documents\csharp\MineSweeper\Game\obj\Debug\net8.0\Game.pdb
 C:\Users\brett\Documents\csharp\MineSweeper\Game\obj\Debug\net8.0\ref\Game.dll
+C:\Users\brett\Documents\csharp\MineSweeper\Game\obj\Debug\net8.0\Game.sourcelink.json

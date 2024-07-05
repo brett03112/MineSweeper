@@ -16,3 +16,4 @@ C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\refint\Gam
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\GameLoop.pdb
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\GameLoop.genruntimeconfig.cache
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\ref\GameLoop.dll
+C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\GameLoop.sourcelink.json
