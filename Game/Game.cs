@@ -211,7 +211,7 @@ public class Game
         while(gameOn)
         {
             DisplayBoard(playBoard);
-            WriteLine("If you would like to tag a bomb, press the letter 'B' else press the spacebar.");  
+            WriteLine("If you would like to tag a bomb, press the letter 'B' else press any other letter key.");  
             char key = char.Parse(ReadLine()!);
             if(key == 'B')
             {
