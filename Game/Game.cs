@@ -272,15 +272,21 @@ public class Game
                     {
                         WriteLine("YOU WIN!!!");
                         DisplayBoard(playBoard);
+                        WriteLine("Thanks for playing!");
+                        WriteLine("Press any key to exit");
+                        ReadKey(intercept: true); // do not output the key pressed
                         gameOn = false;
-                        return;
+                        //return;
                     }
                     else
                     {
                         WriteLine("YOU LOSE!!!");
                         DisplayWinningBoard(playBoard, referenceBoard);
+                        WriteLine("Thanks for playing!");
+                        WriteLine("Press any key to exit");
+                        ReadKey(intercept: true); // do not output the key pressed
                         gameOn = false;
-                        return;
+                        //return;
                     }
                 }
                 DisplayBoard(playBoard);
@@ -335,8 +341,10 @@ public class Game
                 {
                     WriteLine("You hit a bomb! Now we are all dead!!");
                     DisplayWinningBoard(playBoard, referenceBoard); // hit a bomb.  Game over
+                    WriteLine("Press any key to exit");
+                    ReadKey(intercept: true); // do not output the key pressed
                     gameOn = false;
-                    return;
+                    //return; // exit the game
                 }
                 else if (referenceBoard[row, column] == 0) // 0 is an empty space
                 {

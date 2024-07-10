@@ -7,13 +7,10 @@ C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\bin\Debug\net8.0\GameLoop.e
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\bin\Debug\net8.0\GameLoop.deps.json
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\bin\Debug\net8.0\GameLoop.runtimeconfig.json
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\bin\Debug\net8.0\GameLoop.dll
-C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\bin\Debug\net8.0\GameLoop.pdb
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\bin\Debug\net8.0\Game.dll
-C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\bin\Debug\net8.0\Game.pdb
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\GameLoop.csproj.Up2Date
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\GameLoop.dll
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\refint\GameLoop.dll
-C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\GameLoop.pdb
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\GameLoop.genruntimeconfig.cache
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\ref\GameLoop.dll
 C:\Users\brett\Documents\csharp\MineSweeper\GameLoop\obj\Debug\net8.0\GameLoop.sourcelink.json

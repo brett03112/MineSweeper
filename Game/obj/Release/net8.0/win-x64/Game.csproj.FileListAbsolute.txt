@@ -1,0 +1,10 @@
+C:\Users\brett\Documents\cSharp\MineSweeper\Game\bin\Release\net8.0\win-x64\Game.deps.json
+C:\Users\brett\Documents\cSharp\MineSweeper\Game\bin\Release\net8.0\win-x64\Game.dll
+C:\Users\brett\Documents\cSharp\MineSweeper\Game\obj\Release\net8.0\win-x64\Game.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\brett\Documents\cSharp\MineSweeper\Game\obj\Release\net8.0\win-x64\Game.AssemblyInfoInputs.cache
+C:\Users\brett\Documents\cSharp\MineSweeper\Game\obj\Release\net8.0\win-x64\Game.AssemblyInfo.cs
+C:\Users\brett\Documents\cSharp\MineSweeper\Game\obj\Release\net8.0\win-x64\Game.csproj.CoreCompileInputs.cache
+C:\Users\brett\Documents\cSharp\MineSweeper\Game\obj\Release\net8.0\win-x64\Game.sourcelink.json
+C:\Users\brett\Documents\cSharp\MineSweeper\Game\obj\Release\net8.0\win-x64\Game.dll
+C:\Users\brett\Documents\cSharp\MineSweeper\Game\obj\Release\net8.0\win-x64\refint\Game.dll
+C:\Users\brett\Documents\cSharp\MineSweeper\Game\obj\Release\net8.0\win-x64\ref\Game.dll

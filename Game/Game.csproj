@@ -4,6 +4,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <DebugType>embedded</DebugType>
+
+    <RuntimeIdentifiers>
+      win-x64;linux-x64;osx-x64;win-arm64;linux-arm64;osx-arm64
+    </RuntimeIdentifiers>
+
   </PropertyGroup>
 
   <ItemGroup>
