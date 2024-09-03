@@ -35,164 +35,61 @@ public class Game
         return board;
          #endregion
     }
-    #region Encode numbers
     /// <summary>
     /// Takes the game board and encodes the numbers around the bombs
     /// </summary>
     /// <param name="board"></param>
-    /// <returns>The game board with the numbers encoded</returns>// // /// 
+    /// <returns>The game board with the numbers encoded</returns>
     public static int[,] EncodeNumbers(int[,] board)
     {
-        int count = 0;
-        for (int i = 0; i < 10; i++)
+        var encodedBoard = (int[,])board.Clone();
+        for (int i = 0; i < BoardSize; i++)
         {
-            for (int j = 0; j < 10; j++)
+            for (int j = 0; j < BoardSize; j++)
             {
-                if (board[i, j] == 9)
+                if (encodedBoard[i, j] != BombValue)
                 {
-                    continue;
-                }
-                else if (i == 0)// Top row
-                {
-                    if (j == 0)// Top left
-                    {
-                        if(board[i, j + 1] == 9) count++;
-                        if(board[i + 1, j] == 9) count++;
-                        if(board[i + 1, j + 1] == 9) count++;
-                        board[i, j] = count;
-                        count = 0;
-                    }
-                    else if (j == 9)// Top right
-                    {
-                        if(board[i, j - 1] == 9) count++;
-                        if(board[i + 1, j] == 9) count++;
-                        if(board[i + 1, j - 1] == 9) count++;
-                        board[i, j] = count;
-                        count = 0;
-                    }
-                    else // Top middle
-                    {
-                        if(board[i, j - 1] == 9) count++;
-                        if(board[i, j + 1] == 9) count++;
-                        if(board[i + 1, j - 1] == 9) count++;
-                        if(board[i + 1, j] == 9) count++;
-                        if(board[i + 1, j + 1] == 9) count++;
-                        board[i, j] = count;
-                        count = 0;
-                    }
-                }
-                else if (i == 9)// Bottom row
-                {
-                    if (j == 0)// Bottom left
-                    {
-                        if(board[i - 1, j] == 9) count++;
-                        if(board[i - 1, j + 1] == 9) count++;
-                        if(board[i, j + 1] == 9) count++;
-                        board[i, j] = count;
-                        count = 0;
-                    }
-                    else if (j == 9)// Bottom right
-                    {
-                        if(board[i - 1, j] == 9) count++;
-                        if(board[i - 1, j - 1] == 9) count++;
-                        if(board[i, j - 1] == 9) count++;
-                        board[i, j] = count;
-                        count = 0;
-                    }
-                    else // Bottom middle
-                    {
-                        if(board[i - 1, j - 1] == 9) count++;
-                        if(board[i - 1, j] == 9) count++;
-                        if(board[i - 1, j + 1] == 9) count++;
-                        if(board[i, j - 1] == 9) count++;
-                        if(board[i, j + 1] == 9) count++;
-                        board[i, j] = count;
-                        count = 0;
-                    }
-                }
-                else if (j == 0)// Left column
-                {
-                    if(board[i - 1, j] == 9) count++;
-                    if(board[i - 1, j + 1] == 9) count++;
-                    if(board[i, j + 1] == 9) count++;
-                    if(board[i + 1, j] == 9) count++;
-                    if(board[i + 1, j + 1] == 9) count++;
-                    board[i, j] = count;
-                    count = 0;
-                }
-                else if (j == 9)// Right column
-                {
-                    if(board[i - 1, j] == 9) count++;
-                    if(board[i - 1, j - 1] == 9) count++;
-                    if(board[i, j - 1] == 9) count++;
-                    if(board[i + 1, j] == 9) count++;
-                    if(board[i + 1, j - 1] == 9) count++;
-                    board[i, j] = count;
-                    count = 0;
-                }
-                else // Middle
-                {
-                    if(board[i - 1, j - 1] == 9) count++;
-                    if(board[i - 1, j] == 9) count++;
-                    if(board[i - 1, j + 1] == 9) count++;
-                    if(board[i, j - 1] == 9) count++;
-                    if(board[i, j + 1] == 9) count++;
-                    if(board[i + 1, j - 1] == 9) count++;
-                    if(board[i + 1, j] == 9) count++;
-                    if(board[i + 1, j + 1] == 9) count++;
-                    board[i, j] = count;
-                    count = 0;
+                    encodedBoard[i, j] = CountAdjacentBombs(board, i, j);
                 }
             }
         }
-        return board;
+        return encodedBoard;
     }
-    #endregion
 
-    #region Created the play board
+    private static int CountAdjacentBombs(int[,] board, int row, int col)
+    {
+        int count = 0;
+        for (int i = Math.Max(0, row - 1); i <= Math.Min(BoardSize - 1, row + 1); i++)
+        {
+            for (int j = Math.Max(0, col - 1); j <= Math.Min(BoardSize - 1, col + 1); j++)
+            {
+                if (board[i, j] == BombValue)
+                {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
     /// <summary>
     /// Creates the board that the player will see and updated as the game progresses
     /// </summary>
     /// <returns>char[10,10] playBoard that will be displayed and updated</returns>
-    public static char[,] PlayBoard()
-    {
-        char[,] playBoard = new char[10, 10];
-        for(int i = 0; i < 10; i++)
-        {
-            for(int j = 0; j < 10; j++)
-            {
-                playBoard[i, j] = '*';
-            }
-        }
-        return playBoard;
-    }
+    public static char[,] PlayBoard() =>
+        Enumerable.Range(0, BoardSize)
+            .Select(_ => Enumerable.Repeat('*', BoardSize).ToArray())
+            .ToArray()
+            .To2DArray();
 
-    #endregion
-
-    #region Get the number of bombs
     /// <summary>
     /// Counts the number of bombs on the reference board
     /// </summary>
     /// <param name="board"></param>
     /// <returns>int numOfBombs</returns>
-    public static int Bombs(int[,] board)
-    {
-        int numOfBombs = 0;
-        for(int i = 0; i < 10; i++)
-        {
-            for(int j = 0; j < 10; j++)
-            {
-                if(board[i, j] == 9)
-                {
-                    numOfBombs++;
-                }
-            }
-        }
-        return numOfBombs;
-    }
-    #endregion
+    public static int Bombs(int[,] board) =>
+        board.Cast<int>().Count(cell => cell == BombValue);
 
-    #region Logic for the game
     /// <summary>
     /// Logic for the game
     /// </summary>
@@ -203,162 +100,94 @@ public class Game
     {
         int numOfBombs = Bombs(referenceBoard);
         int markedBombs = 0;
-        int row = 0; 
-        int column = 0;
         WriteLine($"Welcome, {player}!");
-        bool gameOn = true;
-        
-        while(gameOn)
+
+        while (true)
         {
             WriteLine();
             DisplayBoard(playBoard);
-            WriteLine("If you would like to tag a bomb, press the letter 'B' else press any other letter key.");  
-            char key = ReadKey().KeyChar;
-            WriteLine();
-            if(key == 'B')
-            {
-                int rowB = 0;
-                int columnB = 0;
-                WriteLine("Enter a row from 1-10: ");
-                try
-                {
-                    rowB = int.Parse(ReadLine()!) - 1;
-                }
-                catch (FormatException) // catch a specific exception
-                {
-                    WriteLine("You did not enter a valid number.");
-                    continue;
-                }
-                catch (Exception ex) // catch all exceptions
-                {
-                    WriteLine($"{ex.GetType()} says {ex.Message}");
-                    continue;
-                }
-                
-                if (rowB < 0 || rowB > 9)
-                {
-                    WriteLine("Row must be between 1 and 10");
-                    continue;
-                }
+            var action = GetPlayerAction();
 
-                WriteLine("Enter a column from 1-10: ");
-                try
-                {
-                    columnB = int.Parse(ReadLine()!) - 1;
-                }
-                catch (FormatException) // catch a specific exception
-                {
-                    WriteLine("You did not enter a valid number.");
-                    continue;
-                }
-                catch (Exception ex) // catch all exceptions
-                {
-                    WriteLine($"{ex.GetType()} says {ex.Message}");
-                    continue;
-                }
-                
-                
-                if (columnB < 0 || columnB > 9)
-                {
-                    WriteLine("Column must be between 1 and 10");
-                    continue;
-                }
-                playBoard[rowB, columnB] = 'B';
+            if (action.IsBombTag)
+            {
+                var (row, col) = GetValidCoordinates();
+                playBoard[row, col] = 'B';
                 markedBombs++;
-                if(markedBombs == numOfBombs)
+
+                if (markedBombs == numOfBombs)
                 {
-                    bool winner = CheckWinner(playBoard, referenceBoard);
-                    if(winner)
-                    {
-                        WriteLine("YOU WIN!!!");
-                        DisplayBoard(playBoard);
-                        WriteLine("Thanks for playing!");
-                        WriteLine("Press any key to exit");
-                        ReadKey(intercept: true); // do not output the key pressed
-                        gameOn = false;
-                        //return;
-                    }
-                    else
-                    {
-                        WriteLine("YOU LOSE!!!");
-                        DisplayWinningBoard(playBoard, referenceBoard);
-                        WriteLine("Thanks for playing!");
-                        WriteLine("Press any key to exit");
-                        ReadKey(intercept: true); // do not output the key pressed
-                        gameOn = false;
-                        //return;
-                    }
+                    EndGame(CheckWinner(playBoard, referenceBoard), playBoard, referenceBoard);
+                    return;
                 }
-                DisplayBoard(playBoard);
-                WriteLine();
-                continue;
             }
             else
             {
-                WriteLine("Enter a row from 1-10: ");
-                try
-                {
-                    row = int.Parse(ReadLine()!) - 1;
-                }
-                catch (FormatException) // catch a specific exception
-                {
-                    WriteLine("You did not enter a valid number.");
-                    continue;
-                }
-                catch (Exception ex) // catch all exceptions
-                {
-                    WriteLine($"{ex.GetType()} says {ex.Message}");
-                    continue;
-                }
-                if(row < 0 || row > 9)
-                {
-                    WriteLine("Row must be between 1 and 10");
-                    continue;
-                }
+                var (row, col) = GetValidCoordinates();
 
-                WriteLine("Enter a column from 1-10: ");
-                try
-                {
-                    column = int.Parse(ReadLine()!) - 1;
-                }
-                catch (FormatException) // catch a specific exception
-                {
-                    WriteLine("You did not enter a valid number.");
-                    continue;
-                }
-                catch (Exception ex) // catch all exceptions
-                {
-                    WriteLine($"{ex.GetType()} says {ex.Message}");
-                    continue;
-                }
-                if(column < 0 || column > 9)
-                {
-                    WriteLine("Column must be between 1 and 10");
-                    continue;
-                }
-
-                if(referenceBoard[row, column] == 9)
+                if (referenceBoard[row, col] == BombValue)
                 {
                     WriteLine("You hit a bomb! Now we are all dead!!");
-                    DisplayWinningBoard(playBoard, referenceBoard); // hit a bomb.  Game over
+                    DisplayWinningBoard(playBoard, referenceBoard);
                     WriteLine("Press any key to exit");
-                    ReadKey(intercept: true); // do not output the key pressed
-                    gameOn = false;
-                    //return; // exit the game
+                    ReadKey(intercept: true);
+                    return;
                 }
-                else if (referenceBoard[row, column] == 0) // 0 is an empty space
+                else if (referenceBoard[row, col] == 0)
                 {
-                    playBoard[row, column] = ' ';
-                    continue;
+                    playBoard[row, col] = ' ';
                 }
                 else
                 {
-                    playBoard[row, column] = (char)(referenceBoard[row, column] + 48);// 48 is the ascii value of 0
+                    playBoard[row, col] = (char)(referenceBoard[row, col] + '0');
                 }
             }
         }
     }
-    #endregion
+
+    private static (bool IsBombTag, bool IsValid) GetPlayerAction()
+    {
+        WriteLine("If you would like to tag a bomb, press the letter 'B' else press any other letter key.");
+        char key = ReadKey().KeyChar;
+        WriteLine();
+        return (key == 'B' || key == 'b', true);
+    }
+
+    private static (int Row, int Col) GetValidCoordinates()
+    {
+        int row = GetValidInput("Enter a row from 1-10: ", 1, BoardSize) - 1;
+        int col = GetValidInput("Enter a column from 1-10: ", 1, BoardSize) - 1;
+        return (row, col);
+    }
+
+    private static int GetValidInput(string prompt, int min, int max)
+    {
+        while (true)
+        {
+            WriteLine(prompt);
+            if (int.TryParse(ReadLine(), out int result) && result >= min && result <= max)
+            {
+                return result;
+            }
+            WriteLine($"Please enter a number between {min} and {max}.");
+        }
+    }
+
+    private static void EndGame(bool isWinner, char[,] playBoard, int[,] referenceBoard)
+    {
+        if (isWinner)
+        {
+            WriteLine("YOU WIN!!!");
+            DisplayBoard(playBoard);
+        }
+        else
+        {
+            WriteLine("YOU LOSE!!!");
+            DisplayWinningBoard(playBoard, referenceBoard);
+        }
+        WriteLine("Thanks for playing!");
+        WriteLine("Press any key to exit");
+        ReadKey(intercept: true);
+    }
 
     #region Display the play board with updates
     /// <summary>
