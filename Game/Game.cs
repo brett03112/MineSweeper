@@ -1,39 +1,50 @@
-﻿namespace MineSweeper.Game;
+using System;
+using System.Linq;
+using static System.Console;
+
+namespace MineSweeper.Game;
 
 public class Game
 {
-    public string Player { get; } = "Player 1";
+    public string Player { get; }
     public int[,] Board { get; }
+
+    private const int BoardSize = 10;
+    private const int BombValue = 9;
+    private const int BombProbability = 15;
 
     public Game(string player, int[,] board)
     {
         Player = player;
         Board = board;
     }
-    #region Create bombs on the board
+
     /// <summary>
     /// Creates the reference board which has the location of the bombs
     /// </summary>
     /// <returns>int[,] board with bombs placed</returns>
     public static int[,] CreateReferenceBoard()
     {
-        
-        Random rand = new Random(); 
+        var rand = new Random();
+        return Enumerable.Range(0, BoardSize)
+            .Select(_ => Enumerable.Range(0, BoardSize)
+                .Select(_ => rand.Next(1, 101) <= BombProbability ? BombValue : 0)
+                .ToArray())
+            .ToArray()
+            .To2DArray();
+    }
 
-        int[ , ] board = new int[10, 10];
+    private static T[,] To2DArray<T>(T[][] source)
+    {
+        int FirstDim = source.Length;
+        int SecondDim = source.GroupBy(row => row.Length).Single().Key;
 
-        for (int i = 0; i < 10; i++)
-        {
-            for (int j = 0; j < 10; j++)
-            {
-                int bombs = rand.Next(1, 101);// Used to randomize the number of bombs on the board
-                if (bombs <= 15)  board[i, j] = 9;
-                else board[i, j] = 0;
-            }
-        }
-       
-        return board;
-         #endregion
+        var result = new T[FirstDim, SecondDim];
+        for (int i = 0; i < FirstDim; i++)
+            for (int j = 0; j < SecondDim; j++)
+                result[i, j] = source[i][j];
+
+        return result;
     }
     /// <summary>
     /// Takes the game board and encodes the numbers around the bombs
