@@ -2,12 +2,6 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Microsoft.NET.ILLink.Tasks/8.0.7": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
-        }
-      },
       "Game/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -20,12 +14,6 @@
       }
     },
     "net8.0/linux-arm64": {
-      "Microsoft.NET.ILLink.Tasks/8.0.7": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
-        }
-      },
       "Game/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -38,12 +26,6 @@
       }
     },
     "net8.0/linux-x64": {
-      "Microsoft.NET.ILLink.Tasks/8.0.7": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
-        }
-      },
       "Game/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -56,12 +38,6 @@
       }
     },
     "net8.0/osx-arm64": {
-      "Microsoft.NET.ILLink.Tasks/8.0.7": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
-        }
-      },
       "Game/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -74,12 +50,6 @@
       }
     },
     "net8.0/osx-x64": {
-      "Microsoft.NET.ILLink.Tasks/8.0.7": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
-        }
-      },
       "Game/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -92,12 +62,6 @@
       }
     },
     "net8.0/win-arm64": {
-      "Microsoft.NET.ILLink.Tasks/8.0.7": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
-        }
-      },
       "Game/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -110,12 +74,6 @@
       }
     },
     "net8.0/win-x64": {
-      "Microsoft.NET.ILLink.Tasks/8.0.7": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.NET.ILLink.Tasks.props": {}
-        }
-      },
       "Game/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -129,57 +87,6 @@
     }
   },
   "libraries": {
-    "Microsoft.NET.ILLink.Tasks/8.0.7": {
-      "sha512": "iI52ptEKby2ymQ6B7h4TWbFmm85T4VvLgc/HvS45Yr3lgi4IIFbQtjON3bQbX/Vc94jXNSLvrDOp5Kh7SJyFYQ==",
-      "type": "package",
-      "path": "microsoft.net.illink.tasks/8.0.7",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "Sdk/Sdk.props",
-        "THIRD-PARTY-NOTICES.TXT",
-        "analyzers/dotnet/cs/ILLink.CodeFixProvider.dll",
-        "analyzers/dotnet/cs/ILLink.RoslynAnalyzer.dll",
-        "build/Microsoft.NET.ILLink.Analyzers.props",
-        "build/Microsoft.NET.ILLink.Tasks.props",
-        "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.8.0.7.nupkg.sha512",
-        "microsoft.net.illink.tasks.nuspec",
-        "tools/net472/ILLink.Tasks.dll",
-        "tools/net472/ILLink.Tasks.dll.config",
-        "tools/net472/Mono.Cecil.Mdb.dll",
-        "tools/net472/Mono.Cecil.Pdb.dll",
-        "tools/net472/Mono.Cecil.Rocks.dll",
-        "tools/net472/Mono.Cecil.dll",
-        "tools/net472/Sdk/Sdk.props",
-        "tools/net472/System.Buffers.dll",
-        "tools/net472/System.Collections.Immutable.dll",
-        "tools/net472/System.Memory.dll",
-        "tools/net472/System.Numerics.Vectors.dll",
-        "tools/net472/System.Reflection.Metadata.dll",
-        "tools/net472/System.Runtime.CompilerServices.Unsafe.dll",
-        "tools/net472/build/Microsoft.NET.ILLink.Analyzers.props",
-        "tools/net472/build/Microsoft.NET.ILLink.Tasks.props",
-        "tools/net472/build/Microsoft.NET.ILLink.targets",
-        "tools/net8.0/ILLink.Tasks.deps.json",
-        "tools/net8.0/ILLink.Tasks.dll",
-        "tools/net8.0/Mono.Cecil.Mdb.dll",
-        "tools/net8.0/Mono.Cecil.Pdb.dll",
-        "tools/net8.0/Mono.Cecil.Rocks.dll",
-        "tools/net8.0/Mono.Cecil.dll",
-        "tools/net8.0/Sdk/Sdk.props",
-        "tools/net8.0/build/Microsoft.NET.ILLink.Analyzers.props",
-        "tools/net8.0/build/Microsoft.NET.ILLink.Tasks.props",
-        "tools/net8.0/build/Microsoft.NET.ILLink.targets",
-        "tools/net8.0/illink.deps.json",
-        "tools/net8.0/illink.dll",
-        "tools/net8.0/illink.runtimeconfig.json",
-        "useSharedDesignerContext.txt"
-      ]
-    },
     "Game/1.0.0": {
       "type": "project",
       "path": "../Game/Game.csproj",
@@ -188,8 +95,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Game >= 1.0.0",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.7"
+      "Game >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -199,11 +105,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\brett\\Documents\\cSharp\\MineSweeper\\GameLoop\\GameLoop.csproj",
+      "projectUniqueName": "c:\\Users\\brett\\Documents\\csharp\\MineSweeper\\GameLoop\\GameLoop.csproj",
       "projectName": "GameLoop",
-      "projectPath": "C:\\Users\\brett\\Documents\\cSharp\\MineSweeper\\GameLoop\\GameLoop.csproj",
+      "projectPath": "c:\\Users\\brett\\Documents\\csharp\\MineSweeper\\GameLoop\\GameLoop.csproj",
       "packagesPath": "C:\\Users\\brett\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\brett\\Documents\\cSharp\\MineSweeper\\GameLoop\\obj\\",
+      "outputPath": "c:\\Users\\brett\\Documents\\csharp\\MineSweeper\\GameLoop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -225,8 +131,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\brett\\Documents\\cSharp\\MineSweeper\\Game\\Game.csproj": {
-              "projectPath": "C:\\Users\\brett\\Documents\\cSharp\\MineSweeper\\Game\\Game.csproj"
+            "C:\\Users\\brett\\Documents\\csharp\\MineSweeper\\Game\\Game.csproj": {
+              "projectPath": "C:\\Users\\brett\\Documents\\csharp\\MineSweeper\\Game\\Game.csproj"
             }
           }
         }
@@ -239,20 +145,13 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
-        "dependencies": {
-          "Microsoft.NET.ILLink.Tasks": {
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[8.0.7, )",
-            "autoReferenced": true
-          }
-        },
         "imports": [
           "net461",
           "net462",
@@ -265,6 +164,10 @@
         "assetTargetFallback": true,
         "warn": true,
         "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.7, 8.0.7]"
+          },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.linux-arm64",
             "version": "[8.0.7, 8.0.7]"
@@ -306,6 +209,18 @@
             "version": "[8.0.7, 8.0.7]"
           },
           {
+            "name": "Microsoft.NETCore.App.Host.win-arm64",
+            "version": "[8.0.7, 8.0.7]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[8.0.7, 8.0.7]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.7, 8.0.7]"
+          },
+          {
             "name": "Microsoft.NETCore.App.Runtime.linux-arm64",
             "version": "[8.0.7, 8.0.7]"
           },
@@ -330,6 +245,10 @@
             "version": "[8.0.7, 8.0.7]"
           },
           {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.7, 8.0.7]"
+          },
+          {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
             "version": "[8.0.7, 8.0.7]"
           },
@@ -343,7 +262,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-preview.7.24407.12/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

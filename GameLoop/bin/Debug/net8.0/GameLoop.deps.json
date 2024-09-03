@@ -16,7 +16,10 @@
       },
       "Game/1.0.0": {
         "runtime": {
-          "Game.dll": {}
+          "Game.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
