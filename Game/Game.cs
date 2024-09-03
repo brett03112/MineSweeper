@@ -26,15 +26,14 @@ public class Game
     public static int[,] CreateReferenceBoard()
     {
         var rand = new Random();
-        return Enumerable.Range(0, BoardSize)
+        return To2DArray(Enumerable.Range(0, BoardSize)
             .Select(_ => Enumerable.Range(0, BoardSize)
                 .Select(_ => rand.Next(1, 101) <= BombProbability ? BombValue : 0)
                 .ToArray())
-            .ToArray()
-            .To2DArray();
+            .ToArray());
     }
 
-    private static T[,] To2DArray<T>(T[][] source)
+    public static T[,] To2DArray<T>(T[][] source)
     {
         int FirstDim = source.Length;
         int SecondDim = source.GroupBy(row => row.Length).Single().Key;
@@ -88,10 +87,9 @@ public class Game
     /// </summary>
     /// <returns>char[10,10] playBoard that will be displayed and updated</returns>
     public static char[,] PlayBoard() =>
-        Enumerable.Range(0, BoardSize)
+        To2DArray(Enumerable.Range(0, BoardSize)
             .Select(_ => Enumerable.Repeat('*', BoardSize).ToArray())
-            .ToArray()
-            .To2DArray();
+            .ToArray());
 
     /// <summary>
     /// Counts the number of bombs on the reference board
