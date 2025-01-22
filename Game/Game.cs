@@ -33,6 +33,12 @@ public class Game
             .ToArray());
     }
 
+    /// <summary>
+    /// Converts a jagged array to a 2D array
+    /// </summary>
+    /// <typeparam name="T">Type of the elements in the array</typeparam>
+    /// <param name="source">Jagged array to convert</param>
+    /// <returns>2D array</returns>
     public static T[,] To2DArray<T>(T[][] source)
     {
         int FirstDim = source.Length;
@@ -66,6 +72,13 @@ public class Game
         return encodedBoard;
     }
 
+        /// <summary>
+        /// Counts the number of adjacent bombs to the cell at the given row and column
+        /// </summary>
+        /// <param name="board">The game board</param>
+        /// <param name="row">Row of the cell in question</param>
+        /// <param name="col">Column of the cell in question</param>
+        /// <returns>The number of adjacent bombs</returns>
     private static int CountAdjacentBombs(int[,] board, int row, int col)
     {
         int count = 0;
@@ -153,6 +166,13 @@ public class Game
         }
     }
 
+    /// <summary>
+    /// Gets the player's action from the console.
+    /// If the player presses the letter 'B' or 'b', then the player is tagging a bomb.
+    /// The function returns a tuple where the first element is true if the player is tagging a bomb, and false otherwise.
+    /// The second element is true if the input is valid, and false otherwise.
+    /// </summary>
+    /// <returns>A tuple containing whether the player is tagging a bomb and whether the input is valid.</returns>
     private static (bool IsBombTag, bool IsValid) GetPlayerAction()
     {
         WriteLine("If you would like to tag a bomb, press the letter 'B' else press any other letter key.");
@@ -161,6 +181,13 @@ public class Game
         return (key == 'B' || key == 'b', true);
     }
 
+    /// <summary>
+    /// Gets valid coordinates from the player.
+    /// The function asks the player to enter a row and column.
+    /// The function keeps asking until a valid row and column is entered.
+    /// The function then returns a tuple containing the row and column.
+    /// </summary>
+    /// <returns>A tuple containing the row and column.</returns>
     private static (int Row, int Col) GetValidCoordinates()
     {
         int row = GetValidInput("Enter a row from 1-10: ", 1, BoardSize) - 1;
@@ -168,6 +195,15 @@ public class Game
         return (row, col);
     }
 
+        /// <summary>
+        /// Gets valid integer input from the player.
+        /// The function asks the player to enter an integer value.
+        /// The function keeps asking until a valid integer value is entered that is between the given minimum and maximum values.
+        /// </summary>
+        /// <param name="prompt">The prompt to display to the player.</param>
+        /// <param name="min">The minimum value that is allowed.</param>
+        /// <param name="max">The maximum value that is allowed.</param>
+        /// <returns>The valid integer value that was entered.</returns>
     private static int GetValidInput(string prompt, int min, int max)
     {
         while (true)
@@ -181,6 +217,12 @@ public class Game
         }
     }
 
+        /// <summary>
+        /// Ends the game by displaying a win or lose message and the final state of the board.
+        /// </summary>
+        /// <param name="isWinner">True if the player has won, false otherwise.</param>
+        /// <param name="playBoard">The current state of the play board.</param>
+        /// <param name="referenceBoard">The reference board.</param> 
     private static void EndGame(bool isWinner, char[,] playBoard, int[,] referenceBoard)
     {
         if (isWinner)
@@ -205,11 +247,27 @@ public class Game
     /// <param name="board"></param>
     public static void DisplayBoard(char[,] board)
     {
-        for(int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
-            for(int j = 0; j < 10; j++)
+            for (int j = 0; j < 10; j++)
             {
+                if (board[i, j] != 'B')
+                {
+                    if (char.IsDigit(board[i, j]))
+                    {
+                        ForegroundColor = ConsoleColor.DarkRed;
+                    }
+                    else
+                    {
+                        ForegroundColor = ConsoleColor.Green;
+                    }
+                }
+                else
+                {
+                    ForegroundColor = ConsoleColor.White;
+                }
                 Write($"{board[i, j]} ");
+                ResetColor();
             }
             WriteLine();
         }
@@ -223,18 +281,17 @@ public class Game
     /// </summary>
     /// <param name="board"></param>
     /// <param name="referenceBoard"></param> <summary>
-    
     public static void DisplayWinningBoard(char[,] board, int[,] referenceBoard)
     {
-        for(int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
-            for(int j = 0; j < 10; j++)
+            for (int j = 0; j < 10; j++)
             {
-                if(referenceBoard[i, j] == 9)
+                if (referenceBoard[i, j] == 9)
                 {
                     board[i, j] = 'B';
                 }
-                else if(referenceBoard[i, j] == 0)
+                else if (referenceBoard[i, j] == 0)
                 {
                     board[i, j] = ' ';
                 }
@@ -270,6 +327,6 @@ public class Game
         return true;
     }
     #endregion
-    
+
 }
 
